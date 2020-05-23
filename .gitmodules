@@ -1,0 +1,18 @@
+[submodule "bundle/vim-colorschemes"]
+	path = bundle/vim-colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "bundle/rdark-terminal2"]
+	path = bundle/rdark-terminal2
+	url = https://github.com/vim-scripts/rdark-terminal2.vim.git
+[submodule "bundle/vim-syntax-extra"]
+	path = bundle/vim-syntax-extra
+	url = https://github.com/justinmk/vim-syntax-extra.git
+[submodule "bundle/vim-sensible"]
+	path = bundle/vim-sensible
+	url = https://github.com/tpope/vim-sensible.git
+[submodule "bundle/TagHighlight"]
+	path = bundle/TagHighlight
+	url = https://github.com/vim-scripts/TagHighlight.git
