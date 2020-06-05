@@ -22,22 +22,24 @@ set termencoding=utf-8
 
 " airline configuration (requires powerline font to be installed)
 let g:airline_powerline_fonts = 1
+let g:airline_theme='wombat'
 
 " basic settings
 set background=dark
-set textwidth=80
+"set textwidth=80
 set colorcolumn=80
 set tabstop=2
 set shiftwidth=2
 set softtabstop=8
 set expandtab
 set number
+set wrap linebreak
 "set nowrap              " do not wrap long lines
-set showmatch           " highlight matching braces
+set showmatch           " hiihlight matching braces
 set cursorline          "highlight current line
 
 " language settings
-set spelllang=pl_PL
+set spelllang=pl_PL,en_us
 set penc=latin2
 
 " colorscheme
@@ -108,11 +110,12 @@ let c_no_comment_fold = 1
 let c_no_if0_fold = 1
 let c_gnu = 1
 
+"I should use default shortcuts!!!
 "split navigation CTRL + H/J/K/L
-nnoremap <C-J> <C-W><C-J> 
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+"nnoremap <C-J> <C-W><C-J> 
+"nnoremap <C-K> <C-W><C-K>
+"nnoremap <C-L> <C-W><C-L>
+"nnoremap <C-H> <C-W><C-H>
 
 "vsplit and split opens on rightside and on bottom 
 set splitright
@@ -127,7 +130,6 @@ map <C-P> :tabp<cr>
 set clipboard=unnamedplus
 noremap <Leader>y "+y
 noremap <Leader>p "+p
-"jakies kon
 
 set mouse=a
 
@@ -140,6 +142,7 @@ set backupdir=~/.vim/.backup
 set undofile            "you can undo between different saves of file
 set history=1000
 set autoread            "auto reload file
+set updatetime=1000
 
 "unused
 "
@@ -154,4 +157,3 @@ set autoread            "auto reload file
 "au BufNewFile,BufRead *.spad,*.input set filetype=axiom
 "au BufEnter *.boot setlocal filetype=axiom tabstop=8 shiftwidth=8 softtabstop=8
 "au BufNewFile,BufRead *.input *.spad exe "source ~/.vim/syntax/axiom.vim"franZ vimrc
-
