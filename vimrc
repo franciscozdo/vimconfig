@@ -35,12 +35,22 @@ set expandtab
 set number
 set wrap linebreak
 "set nowrap              " do not wrap long lines
-set showmatch           " hiihlight matching braces
+set showmatch           " highlight matching braces
 set cursorline          "highlight current line
 
 " language settings
-set spelllang=pl_PL,en_us
+set spelllang=pl,en
 set penc=latin2
+
+nnoremap <space>s :call SpellToggle()<cr>
+
+function! SpellToggle()
+  if &spell
+    setlocal nospell
+  else
+    setlocal spell
+  endif
+endfunction
 
 " colorscheme
 set t_Co=256
@@ -109,6 +119,8 @@ au FileType c,cpp setlocal foldmethod=syntax foldnestmax=1 cino=(0
 let c_no_comment_fold = 1
 let c_no_if0_fold = 1
 let c_gnu = 1
+
+au FileType tex,gitcommit setlocal spell
 
 "I should use default shortcuts!!!
 "split navigation CTRL + H/J/K/L
