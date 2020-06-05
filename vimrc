@@ -14,6 +14,7 @@ call pathogen#helptags()
 set backup              " keep a backup file
 set history=50          " keep 50 lines of command line history
 set showcmd             " display incomplete commands
+set noshowmode          " don't show current mode (i have it in airline)
 set modeline
 
 " set UTF-8 encoding
