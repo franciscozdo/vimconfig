@@ -1,8 +1,3 @@
-"" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -35,7 +30,6 @@ set softtabstop=8
 set expandtab
 set number
 set wrap linebreak
-"set nowrap              " do not wrap long lines
 set showmatch           " highlight matching braces
 set cursorline          "highlight current line
 
@@ -44,7 +38,6 @@ set spelllang=pl,en
 set penc=latin2
 
 nnoremap <space>s :call SpellToggle()<cr>
-
 function! SpellToggle()
   if &spell
     setlocal nospell
@@ -71,35 +64,6 @@ if has("autocmd")
         \ endif
 endif
 
-if has("cscope")
-  " use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
-  set cscopetag
-
-  " check cscope for definition of a symbol before checking ctags:
-  " set to 1 if you want the reverse search order.
-  set csto=0
-
-  " add any cscope database in current directory
-  if filereadable("cscope.out")
-    cs add cscope.out  
-  endif
-
-  " show msg when any other cscope db added
-  set cscopeverbose 
-
-  " Using 'CTRL-spacebar' (intepreted as CTRL-@ by vim) then a search type
-  " makes the vim window split horizontally, with search result displayed in
-  " the new window.
-  nmap <C-@>s :scs find s <C-R>=expand("<cword>")<CR><CR>	
-  nmap <C-@>g :scs find g <C-R>=expand("<cword>")<CR><CR>	
-  nmap <C-@>c :scs find c <C-R>=expand("<cword>")<CR><CR>	
-  nmap <C-@>t :scs find t <C-R>=expand("<cword>")<CR><CR>	
-  nmap <C-@>e :scs find e <C-R>=expand("<cword>")<CR><CR>	
-  nmap <C-@>f :scs find f <C-R>=expand("<cfile>")<CR><CR>	
-  nmap <C-@>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
-  nmap <C-@>d :scs find d <C-R>=expand("<cword>")<CR><CR>	
-endif
-
 " tagbar settings
 nnoremap <silent> <F8> :TagbarToggle<CR>
 
@@ -123,21 +87,16 @@ let c_gnu = 1
 
 au FileType tex,gitcommit setlocal spell
 
-"I should use default shortcuts!!!
-"split navigation CTRL + H/J/K/L
-"nnoremap <C-J> <C-W><C-J> 
-"nnoremap <C-K> <C-W><C-K>
-"nnoremap <C-L> <C-W><C-L>
-"nnoremap <C-H> <C-W><C-H>
+source ~/.vim/latex_helpers.vim
 
 "vsplit and split opens on rightside and on bottom 
 set splitright
 set splitbelow
 
 "open in new tab and move between
-map <C-T> :tabedit 
-map <C-N> :tabn<cr>
-map <C-P> :tabp<cr>
+map <space>t :tabedit 
+map <space>n :tabn<cr>
+map <space>p :tabp<cr>
 
 "clipboard settings
 set clipboard=unnamedplus
