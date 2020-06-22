@@ -61,6 +61,17 @@ colorscheme rdark-terminal2
 " https://sunaku.github.io/vim-256color-bce.html
 set t_ut=
 
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
+endif
+
 " Tag Highlighting settings
 au BufEnter *.c,*.h silent call TagHighlight#ReadTypes#ReadTypesByOption()
 
@@ -110,3 +121,15 @@ nnoremap <leader>e :Lex<cr>:vertical resize 30<cr>
 set clipboard=unnamedplus
 noremap <leader>y "+y
 noremap <leader>p "+p
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
+endif
+
