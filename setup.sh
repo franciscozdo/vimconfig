@@ -14,9 +14,9 @@ elif [ "$mode" == "basic" ]; then
 #  # make necessary directories
 #  mkdir .swp .undo .backup
 
-  ln -s basic-config vimrc
+  ln -s basic-config.vim vimrc
 elif [ "$mode" == "minimal" ]; then
-  ln -s minimal-config vimrc
+  ln -s minimal-config.vim vimrc
 else
   echo not recognized mode
 fi
