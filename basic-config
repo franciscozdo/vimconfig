@@ -28,7 +28,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=8
 set expandtab
-set nu rnu "set number relativenumber
+set nu "rnu "set number relativenumber
 set wrap linebreak
 set showmatch           " highlight matching braces
 set cursorline          "highlight current line
@@ -121,15 +121,3 @@ nnoremap <leader>e :Lex<cr>:vertical resize 30<cr>
 set clipboard=unnamedplus
 noremap <leader>y "+y
 noremap <leader>p "+p
-
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe "normal g`\"" |
-        \ endif
-endif
-
