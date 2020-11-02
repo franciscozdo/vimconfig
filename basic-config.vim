@@ -56,7 +56,7 @@ set penc=latin2
 
 " colorscheme
 set t_Co=256
-colorscheme rdark-terminal2
+colorscheme gruvbox
 " Fixing Vim's Background Color Erase for 256-color tmux and GNU screen
 " https://sunaku.github.io/vim-256color-bce.html
 set t_ut=
