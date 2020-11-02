@@ -4,9 +4,6 @@
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
 	url = https://github.com/vim-airline/vim-airline
-[submodule "bundle/rdark-terminal2"]
-	path = bundle/rdark-terminal2
-	url = https://github.com/vim-scripts/rdark-terminal2.vim.git
 [submodule "bundle/vim-syntax-extra"]
 	path = bundle/vim-syntax-extra
 	url = https://github.com/justinmk/vim-syntax-extra.git
