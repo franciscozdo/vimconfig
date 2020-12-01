@@ -12,6 +12,10 @@ set showcmd             " display incomplete commands
 set noshowmode          " don't show current mode (i have it in airline)
 set modeline
 
+" auto reload file when changed
+set autoread
+au CursorHold * checktime  
+
 " set UTF-8 encoding
 set fileencoding=utf-8
 set termencoding=utf-8
@@ -110,7 +114,7 @@ source ~/.vim/latex_helpers.vim
 "open in new tab and move between
 nnoremap <leader>t :tabedit 
 nnoremap <leader>n :tabn<cr>
-nnoremap <leader>p :tabp<cr>
+nnoremap <leader>N :tabp<cr>
 
 nnoremap = :vertical resize +5<cr> 
 nnoremap - :vertical resize -5<cr>
