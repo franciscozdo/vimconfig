@@ -39,6 +39,9 @@ set cursorline          "highlight current line
 set incsearch
 set mouse=a
 
+syntax on
+filetype plugin indent on
+
 "vsplit and split opens on rightside and on bottom 
 set splitright
 set splitbelow
@@ -46,9 +49,9 @@ set splitbelow
 "HISTORY, LOADING FILE, ETC.
 
 "directories for swap files, etc
-set undodir=~/.vim/.undo
-set directory=~/.vim/.swp
-set backupdir=~/.vim/.backup
+set undodir=~/.vim/.undo,/tmp//
+set directory=~/.vim/.swp//,/tmp//
+set backupdir=~/.vim/.backup//,/tmp//
 set undofile            "you can undo between different saves of file
 set history=1000
 set autoread            "auto reload file
@@ -114,7 +117,7 @@ source ~/.vim/latex_helpers.vim
 "open in new tab and move between
 nnoremap <leader>t :tabedit 
 nnoremap <leader>n :tabn<cr>
-nnoremap <leader>N :tabp<cr>
+nnoremap <leader>m :tabp<cr>
 
 nnoremap = :vertical resize +5<cr> 
 nnoremap - :vertical resize -5<cr>
