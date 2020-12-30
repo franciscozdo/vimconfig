@@ -58,7 +58,6 @@ set autoread            "auto reload file
 set updatetime=1000
 " language settings
 set spelllang=pl,en
-set penc=latin2
 
 
 " colorscheme
@@ -67,6 +66,12 @@ colorscheme gruvbox
 " Fixing Vim's Background Color Erase for 256-color tmux and GNU screen
 " https://sunaku.github.io/vim-256color-bce.html
 set t_ut=
+
+"Repair spellchecking highlithing
+hi SpellBad cterm=underline ctermfg=red
+hi SpellCap cterm=underline ctermfg=blue
+hi SpellRare cterm=underline
+hi SpellLocal cterm=underline
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -97,6 +102,8 @@ let c_no_comment_fold = 1
 let c_no_if0_fold = 1
 let c_gnu = 1
 
+au BufRead,BufNewFile *.tex set filetype=tex
+au BufRead,BufNewFile *.ejs set filetype=html
 au FileType tex,gitcommit setlocal spell
 
 
