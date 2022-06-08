@@ -26,7 +26,7 @@ let g:airline_theme='wombat'
 
 " basic settings
 set background=dark
-"set textwidth=80
+set textwidth=98
 set colorcolumn=80
 set tabstop=2
 set shiftwidth=2
@@ -103,6 +103,7 @@ let c_no_if0_fold = 1
 let c_gnu = 1
 
 au BufRead,BufNewFile *.tex set filetype=tex
+au BufRead,BufNewFile *.he,*.she set filetype=helium
 au BufRead,BufNewFile *.ejs set filetype=html
 au FileType tex,gitcommit setlocal spell
 
