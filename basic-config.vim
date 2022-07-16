@@ -4,13 +4,8 @@ set nocompatible
 
 " Pathogen load
 call pathogen#infect()
-call pathogen#helptags()
 
 " BASIC
-set softtabstop=2
-set tabstop=2
-set shiftwidth=2
-set expandtab
 set number
 set wrap linebreak showbreak=ͱ
 set showmatch           " highlight matching braces
@@ -22,6 +17,13 @@ set showcmd             " display incomplete commands
 set modeline
 syntax on
 filetype plugin indent on
+
+" tabs
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
+set expandtab
+let g:indenty_show_msg=0 " don't show message from plugin
 
 " jump to last known line in file
 autocmd BufReadPost *
@@ -37,16 +39,19 @@ set colorcolumn=80
 set t_Co=256
 colorscheme gruvbox
 set t_ut=
-let g:airline_powerline_fonts = 1
-let g:airline_theme='wombat'
+let g:rainbow_active=1
+
+" lightline settings
+set laststatus=2
+source ~/.vim/lightline.vim
 
 " SPLITTING
 set splitright
 set splitbelow
-nnoremap = :vertical resize +5<cr> 
+nnoremap = :vertical resize +5<cr>
 nnoremap - :vertical resize -5<cr>
 
-" TABS
+" TABS that space is necessary
 nnoremap <leader>t :tabedit 
 nnoremap <leader>n :tabn<cr>
 nnoremap <leader>m :tabp<cr>
@@ -90,11 +95,11 @@ set termencoding=utf-8
 set undodir=~/.vim/.undo,/tmp//
 set directory=~/.vim/.swp//,/tmp//
 set backupdir=~/.vim/.backup//,/tmp//
-set undofile            "you can undo between different saves of file
-set autoread            "auto reload file
+set undofile
+set autoread
 set updatetime=1000
-set backup              " keep a backup file
-set history=50          " keep 50 lines of command line history
+set backup
+set history=50
 
 " OTHER
 
@@ -109,8 +114,8 @@ nnoremap <leader>p :diffput<cr>
 
 " Directory Tree settings
 noremap <leader>e :Lex<CR>
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_winsize= 10
-let g:netrw_keepdir = 0
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+let g:netrw_winsize=10
+let g:netrw_keepdir=0
 
