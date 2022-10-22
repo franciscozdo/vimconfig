@@ -1,0 +1,209 @@
+diff --git a/basic-config.vim b/basic-config.vim
+index 0f5de39..4a6eaec 100644
+--- a/basic-config.vim
++++ b/basic-config.vim
+@@ -58,6 +58,7 @@ noremap <leader>p "+p
+ 
+ " SPELL
+ set spelllang=pl,en
++"set spell
+ 
+ " Repair spellchecking highlighting
+ hi SpellBad cterm=underline ctermfg=red
+@@ -114,3 +115,11 @@ let g:netrw_liststyle=3
+ let g:netrw_winsize=10
+ let g:netrw_keepdir=0
+ 
++" Search options
++set hlsearch
++nnoremap <leader>/ :set nohlsearch<CR>
++nnoremap / :set hlsearch<CR>/
++nnoremap * :set hlsearch<CR>*
++
++" Search for tags in upper directories
++set tags=tags;/
+Submodule bundle/vim-gitgutter ded1194..b356cc9 (rewind):
+  < Fix comparison to be case sensitive
+  < Set filetype in :GitGutterDiffOrig
+  < Use a reliable regexp operator for lower case
+  < Use reliable regexp character class for lower case
+  < Improve testing of private functions
+  < Fix parsing of 'git ls-files -v' for filenames with spaces
+  < Whitespace
+  < Heeds git's "assume unchanged" bit
+  < Add GitGutterDiffOrig command
+  < Document :GitGutterBuffer{Disable,Enable,Toggle}
+  < #816 do not modify previewpopup when it does not exist
+  < Extract common code into function
+  < Fix enabling buffer when plugin disabled
+  < Prevent 'previewpopup' from breaking hunk previews
+  < Allow configuration of floating window appearance
+  < Capitalise NONE for consistency
+  < Always pass some group name to sign arguments
+  < Fix autocmd to use <abuf> for effective buffer
+  < Fix restoration of g:gitgutter_enabled after :vimgrep
+  < fix quickfix for combined diffs
+  < Add instructions on how to customize colours in preview window
+  < Make intra-highlights customizable
+  < Update quickfix test
+  < Use 0/1 instead of v:true/v:false for compatibility with older vim versions.
+  < When using loclist, only add hunks for current file.
+  < Add caveat to setting of Windows git executable
+  < Close preview on escape: only map <Esc> while preview open
+  < Enable is_preview_window_open() to handle floating windows
+  < Expose is-open and close hunk-preview-window functions
+  < Clear unwanted characters in nmap
+  < Move more important paragraph above less important ones
+  < Expand docs on how to close a hunk preview window
+  < Remove useless comparison
+  < Update open preview on hunk jump
+  < Suppress echoing of preview window file name
+  < Remove stale link
+  < Capitalize warning messages
+  < Clean up warning messages
+  < Fix resizing of existing non-floating hunk preview window
+  < Avoid cursor in unexpected window after Esc in preview
+  < Ensure backward compatibility with 'previewpopup' option
+  < Use floating window for preview instead of popup
+  < Simplify opening of preview window
+  < Make statusline blank in hunk preview window
+  < Revert GitGutterGetHunkSummary() to show hunks when inactive
+  < Make error message useful
+  < Ensure GitGutterGetHunks() always returns a 3 element list
+  < Make consistent with GitGutterGetHunks()
+  < Ensure hunk summary is updated during a hunk op
+  < Fix pwsh/powershell test when used with a parameters
+  < Update help doc
+  < Enable <Esc> to close floating preview window
+  < Prevent hunk preview using preview window from changing alternate file
+  < Add help file modeline
+  < Force cmd.exe to be used by system() instead of pwsh or powershell on Windows
+  < Recreate temp directory if it gets deleted
+  < Reuse tempfile base names
+  < Add some troubleshooting steps
+  < Replace custom function with built-in get() function
+  < Suggest a command instead of a map for opening quickfix
+  < Document how to open quickfix list after :GitGutterQuickFix
+  < Show message like "Hunk 4 of 11" after hunk jumping
+  < Ensure that buffer is processed soon after startup
+  < Keep references to pending jobs to avoid premature deletion
+  < Use g:gitgutter_grep instead of grep in debug command
+  < Skip processing on BufEnter while vim is starting
+  < Fix missing variable prefix
+  < Do not output shell related options in #debug()
+  < Add help tag to Vim help file
+  < Avoid floating preview window immediately closing itself
+  < Fix typo in highlight group name
+  < Treat cleared highlight groups as not set
+  < Return early when pre-condition not met
+  < Distinguish no hunks at all from no further hunks
+  < update(doc/gitgutter.txt): Document sign removed above and below
+  < fix(plugin/gitgutter.vim): Avoid using double-byte characters
+  < Document sign removed above and below
+  < Change default sign for removed above and below
+  < Make quickfix paths relative to current working directory
+  < Add option for <Esc> to close non-floating preview window
+  < Remove duplicate args in GitGutterQuickFix
+  < Remove duplicate args introduced in dc3c0dcd
+  < Remove obsolete profiling script
+  < Reset any existing preview window
+  < Avoid E315 when populating Neovim floating preview window
+  < Account for wrapping when resizing preview window
+Submodule bundle/vim-grammarous 0000000...db46357 (new submodule)
+diff --git a/syntax/textile.vim b/syntax/textile.vim
+new file mode 100644
+index 0000000..e9534e9
+--- /dev/null
++++ b/syntax/textile.vim
+@@ -0,0 +1,91 @@
++"
++"   You will have to restart vim for this to take effect.  In any case
++"   it is a good idea to read ":he new-filetype" so that you know what
++"   is going on, and why the above lines work.
++"
++"   Written originally by Dominic Mitchell, Jan 2006.
++"   happygiraffe.net
++"
++"   Modified by Aaron Bieber, May 2007.
++"   blog.aaronbieber.com
++"
++"   Modified by Tim Harper, July 2008 - current
++"   tim.theenchanter.com
++" @(#) $Id$
++
++if version < 600
++    syntax clear
++elseif exists("b:current_syntax")
++    finish
++endif
++
++" Textile commands like "h1" are case sensitive, AFAIK.
++syn case match
++
++" Textile syntax: <http://textism.com/tools/textile/>
++
++" Inline elements.
++syn match txtEmphasis    /_[^_]\+_/
++syn match txtBold        /\*[^*]\+\*/
++syn match txtCite        /??.\+??/
++syn match txtDeleted     /-[^-]\+-/
++syn match txtInserted    /+[^+]\++/
++syn match txtSuper       /\^[^^]\+\^/
++syn match txtSub         /\~[^~]\+\~/
++syn match txtSpan        /%[^%]\+%/
++syn match txtFootnoteRef /\[[0-9]\+]/
++syn match txtCode        /@[^@]\+@/
++
++" Block elements.
++syn match txtHeader      /^h1\(([^)]*)\|{[^}]*}\|\[[^]]*\]\|[<>=()]\)*\. .\+/
++syn match txtHeader2     /^h2\(([^)]*)\|{[^}]*}\|\[[^]]*\]\|[<>=()]\)*\. .\+/
++syn match txtHeader3     /^h[3-6]\(([^)]*)\|{[^}]*}\|\[[^]]*\]\|[<>=()]\)*\..\+/
++syn match txtFootnoteDef /^fn[0-9]\+\(([^)]*)\|{[^}]*}\|\[[^]]*\]\|[<>=()]\)*\./
++syn match txtListBullet  /\v^\*+ /
++syn match txtListBullet2  /\v^(\*\*)+ /
++syn match txtListNumber  /\v^#+ /
++syn match txtListNumber2  /\v^(##)+ /
++
++syn region txtCodeblock start="^bc\(([^)]*)\|{[^}]*}\|\[[^]]*\]\|[<>=()]\)*\. " end="^$"
++syn region txtBlockquote start="^bq\(([^)]*)\|{[^}]*}\|\[[^]]*\]\|[<>=()]\)*\. " end="^$"
++syn region txtParagraph start="^bq\(([^)]*)\|{[^}]*}\|\[[^]]*\]\|[<>=()]\)*\. " end="^$"
++
++syn cluster txtBlockElement contains=txtHeader,txtBlockElement,txtFootnoteDef,txtListBullet,txtListNumber
++
++
++" Everything after the first colon is from RFC 2396, with extra
++" backslashes to keep vim happy...  Original:
++" ^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?
++"
++" Revised the pattern to exclude spaces from the URL portion of the
++" pattern. Aaron Bieber, 2007.
++syn match txtLink /"[^"]\+":\(\([^:\/?# ]\+\):\)\?\(\/\/\([^\/?# ]*\)\)\?\([^?# ]*\)\(?\([^# ]*\)\)\?\(#\([^ ]*\)\)\?/
++
++syn cluster txtInlineElement contains=txtEmphasis,txtBold,txtCite,txtDeleted,txtInserted,txtSuper,txtSub,txtSpan
++
++if version >= 508 || !exists("did_txt_syn_inits")
++    if version < 508
++        let did_txt_syn_inits = 1
++        command -nargs=+ HiLink hi link <args>
++    else
++        command -nargs=+ HiLink hi def link <args>
++    endif
++
++    HiLink txtHeader Title
++    HiLink txtHeader2 Question
++    HiLink txtHeader3 Statement
++    HiLink txtBlockquote Comment
++    HiLink txtCodeblock Identifier
++    HiLink txtListBullet Operator
++    HiLink txtListBullet2 Constant
++    HiLink txtListNumber Operator
++    HiLink txtListNumber2 Constant
++    HiLink txtLink String
++    HiLink txtCode Identifier
++    hi def txtEmphasis term=underline cterm=underline gui=italic
++    hi def txtBold term=bold cterm=bold gui=bold
++
++    delcommand HiLink
++endif
++
++" vim: set ai et sw=4 :

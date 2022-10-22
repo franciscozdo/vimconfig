@@ -58,6 +58,7 @@ noremap <leader>p "+p
 
 " SPELL
 set spelllang=pl,en
+"set spell
 
 " Repair spellchecking highlighting
 hi SpellBad cterm=underline ctermfg=red
@@ -114,3 +115,11 @@ let g:netrw_liststyle=3
 let g:netrw_winsize=10
 let g:netrw_keepdir=0
 
+" Search options
+set hlsearch
+nnoremap <leader>/ :set nohlsearch<CR>
+nnoremap / :set hlsearch<CR>/
+nnoremap * :set hlsearch<CR>*
+
+" Search for tags in upper directories
+set tags=tags;/
